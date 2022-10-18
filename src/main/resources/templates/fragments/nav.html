@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div class="nav" th:fragment="nav">
+        <nav>
+            <ul>
+                <li><a href="teacher.jsp">홈으로</a></li>
+                <li><a th:href="@{/dept/all}">부서조회</a></li>
+                <li><a th:href="@{/emp/all}">사원정보조회</a></li>
+                <li><a href="result.jsp">강사매출현황</a></li>
+            </ul>
+        </nav>
+    </div>
+</html>

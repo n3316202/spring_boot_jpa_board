@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div class="pagination" th:fragment="pagination">
+        <ul>
+            <li th:if="${result.prev}">
+                <a th:href="@{/guestbook/list(page=${result.start -1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}" tabindex="-1">Previous</a>
+            </li>
+            <li th:class=" 'page-item' + ${result.page == page?'active':''}" th:each="page:${result.pageList}">
+                <a class="page-link" th:href="@{/guestbook/list(page=${page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                    [[${page}]]
+                </a>
+            </li>
+            <li th:if="${result.next}">
+                <a th:href="@{/guestbook/list(page=${result.end +1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">Next</a>
+            </li>
+        </ul>
+    </div>
+</html>

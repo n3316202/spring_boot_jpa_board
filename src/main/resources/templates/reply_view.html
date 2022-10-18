@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+
+<div layout:fragment="content">
+
+    <section>
+        <div class="title">답글 쓰기</div>
+        <div class="wrapper">
+            <form id="updateForm" action="reply" method="post">
+                <table style="width: 700px;">
+                    <input id="input_bid" type="hidden" name="bid" th:value="${reply_view.bid}">
+                    <input type="hidden" name="bgroup" th:value="${reply_view.bgroup}">
+                    <input type="hidden" name="bstep" th:value="${reply_view.bstep}">
+                    <input type="hidden" name="bindent" th:value="${reply_view.bindent}">
+                    <input type="hidden" name="bindent" th:value="${reply_view.bhit}">
+                    <tr>
+                        <td> 번호 </td>
+                        <td> [[${reply_view.bid}]] </td>
+                    </tr>
+                    <tr>
+                        <td> 히트 </td>
+                        <td> [[${reply_view.bhit}]] </td>
+                    </tr>
+                    <tr>
+                        <td> 이름 </td>
+                        <td> <input id="input_bname" type="text" name="bwriter" th:value="${reply_view.bwriter}"></td>
+                    </tr>
+                    <tr>
+                        <td> 제목 </td>
+                        <td> <input id="input_btitle" type="text" name="btitle" th:value="${reply_view.btitle}"></td>
+                    </tr>
+                    <tr>
+                        <td> 내용 </td>
+                        <td> <textarea style="width: 100%" id="input_bcontent" rows="10" name="bcontent" >[[${reply_view.bcontent}]]</textarea></td>
+                    </tr>
+                    <tr >
+                        <td colspan="2"><input type="submit" value="답변"> <a href="list" >목록</a></td>
+                    </tr>
+            </form>
+        </div>
+    </section>
+
+</div>

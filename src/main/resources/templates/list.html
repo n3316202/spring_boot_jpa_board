@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+
+<div layout:fragment="content">
+
+    <section>
+        <div class="title">보드 리스트</div>
+        <div class="wrapper">
+            <table style="width: 700px;">
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>제목</th>
+                    <th>날짜</th>
+                    <th>히트</th>
+                </tr>
+                <tr th:each="board : ${boardList}">
+                    <td th:text="${board.bid}"></td>
+                    <td th:text="${board.bwriter}"></td>
+                    <td>
+                        <th:block  th:if="${board.bindent} > 0" th:each="num: ${#numbers.sequence(1,board.bindent)}">[Re]</th:block>
+                        <a th:href="@{/board/content_view(bid=${board.bid})}">[[${board.btitle}]]</a>
+
+                    </td>
+                    <td th:text="${board.regdate}"></td>
+                    <td th:text="${board.bhit}"></td>
+                </tr>
+                <tr>
+                    <td colspan="5"> <a href="write_view">글 작성</a></td>
+                </tr>
+            </table>
+        </div>
+
+
+<!--        <div class="center">
+            <ul class="pagination">
+                <li th:if="${result.prev}">
+                    <a th:href="@{/emp/list(page=${result.start -1})}" tabindex="-1"> << </a>
+                </li>
+                <li th:class=" 'page-item' + ${result.page == page?'active':''}" th:each="page:${result.pageList}">
+                    <a th:href="@{/emp/list(page=${page})}">
+                        [[${page}]]
+                    </a>
+                </li>
+                <li th:if="${result.next}">
+                    <a th:href="@{/emp/list(page=${result.end +1})}"> >> </a>
+                </li>
+            </ul>
+        </div>-->
+
+
+
+    </section>
+
+</div>

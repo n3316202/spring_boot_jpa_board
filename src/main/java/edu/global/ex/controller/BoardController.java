@@ -1,6 +1,7 @@
 package edu.global.ex.controller;
 
 import edu.global.ex.dto.BoardDTO;
+import edu.global.ex.dto.PageRequestDTO;
 import edu.global.ex.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,19 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @GetMapping("/list")
+
+/*    @GetMapping("/list")
     public String list(Model model){
         log.info("list() ..");
         model.addAttribute("boardList",boardService.getList());
+        return "list";
+    }*/
+
+    @GetMapping("/list")
+    public String list(@ModelAttribute PageRequestDTO pageRequestDTO , Model model){
+        // 실제로 model에 추가되는 데이터 : PageResultDTO
+        // => Model을 이용해 GuestbookServiecImpl에서 반환하는 PageResultDTO를 result 라는 이름으로 전달
+        model.addAttribute("result", boardService.getList(pageRequestDTO));
         return "list";
     }
 

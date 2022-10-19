@@ -1,6 +1,8 @@
 package edu.global.ex.service;
 
 import edu.global.ex.dto.BoardDTO;
+import edu.global.ex.dto.PageRequestDTO;
+import edu.global.ex.dto.PageResultDTO;
 import edu.global.ex.entity.Board;
 
 import java.util.List;
@@ -12,7 +14,8 @@ public interface BoardService  {
     Long register(BoardDTO board); //글쓰기
     BoardDTO read(long bid);//글보기 메소드
     Long modify(BoardDTO board); //글수정
-
+    //paging 포함
+    public PageResultDTO<BoardDTO, Board> getList(PageRequestDTO requestDTO);
 
 /*
 
